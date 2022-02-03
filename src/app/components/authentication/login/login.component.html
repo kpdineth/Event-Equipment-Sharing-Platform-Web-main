@@ -1,0 +1,45 @@
+<div class="row mt-5 mb-5">
+    <div class="col-md-3 col-sm-3 col-lg-3 col-3"></div>
+    <div class="col-md-6 col-sm-6 col-lg-6 col-6">
+        <div class="card">
+            <div class="card-header" style="background-color: rgb(222, 253, 243);">
+                <h1 class="card-title text-center">Login</h1>
+            </div>
+            <div class="card-body" style="background-color: rgb(213, 243, 253);">
+
+                <div *ngIf="showError" class="alert alert-danger" role="alert">
+                    {{errorMessage}}
+                </div>
+
+                <form [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="loginUser(loginForm.value)">
+                    <div class="form-group row">
+                        <label for="username" class="col-form-label col-sm-2">Username:</label>
+                        <div class="col-md-12 col-sm-12 col-lg-12 col-12">
+                            <input type="text" id="username" formControlName="username" class="form-control" />
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-lg-12 col-12">
+                            <em *ngIf="validateControl('username') && hasError('username', 'required')">Username is required</em>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-form-label col-sm-2">Password:</label>
+                        <div class="col-md-12 col-sm-12 col-lg-12 col-12">
+                            <input type="password" id="password" formControlName="password" class="form-control" />
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-lg-12 col-12">
+                            <em *ngIf="validateControl('password') && hasError('password', 'required')">Password is required</em>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                        <div class="col-md-12 col-sm-12 col-lg-12 col-12">
+                            <button style="float: right" type="submit" class="btn btn-info" [disabled]="!loginForm.valid">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-lg-3 col-3"></div>
+
+</div>

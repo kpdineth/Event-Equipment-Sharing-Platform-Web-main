@@ -1,0 +1,200 @@
+<div class="row mt-5 mb-5">
+    <div class="col-md-3 col-sm-3 col-lg-3 col-3"></div>
+    <div class="col-md-6 col-sm-6 col-lg-6 col-6">
+        <div class="card">
+            <div class="card-header" style="background-color: rgb(222, 253, 243);">
+                <h2 class="text-center">{{'Register Your Charity' | uppercase}}</h2>
+            </div>
+            <div class="card-body" style="background-color: rgb(213, 243, 253);">
+                <div class="row" *ngIf="charity.ID > 0">
+                    <div class="col-md-12 col-sm-12 col-lg-12 col-12">
+                        <label for="charity-name">Charity ID: {{this.charity.ID}}</label>
+                        <h2>
+                            Charity added successfully. You will receive an email when your request will be confirmed.
+                        </h2>
+                    </div>
+                </div>
+                <div class="row" *ngIf="charity.ID ==0">
+                    <div class="col-md-12 col-sm-12 col-lg-12 col-12">
+                        <form #registrationForm="ngForm">
+                            <div class="form-group row">
+                                <div class="col-md-6 col-sm-8 col-lg-10 col-12">
+                                    <label for="charity-name">Charity Name</label>
+                                    <input #name="ngModel" type="text" name="charity.name" required minlength="5" class="form-control" [(ngModel)]="charity.Name" id="charity-name" aria-describedby="emailHelp" placeholder="Enter Name">
+                                </div>
+                                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                                    <div *ngIf="name.errors?.['required']">
+                                        Name is required.
+                                    </div>
+                                    <div *ngIf="name.errors?.['minlength']">
+                                        Name must be at least 5 characters long.
+                                    </div>
+                                    <!-- <div *ngIf="charity..errors?.['forbiddenName']">
+                  Name cannot be Bob.
+                </div> -->
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6 col-sm-8 col-lg-10 col-12">
+                                    <label for="charity-firstname">First Name</label>
+                                    <input #firstname="ngModel" type="text" name="charity.firstname" required minlength="2" class="form-control" [(ngModel)]="charity.FirstName" id="charity-firstname" placeholder="Enter First Name">
+                                </div>
+                                <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="alert alert-danger">
+                                    <div *ngIf="firstname.errors?.['required']">
+                                        First Name is required.
+                                    </div>
+                                    <div *ngIf="firstname.errors?.['minlength']">
+                                        First Name must be at least 2 characters long.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6 col-sm-8 col-lg-10 col-12">
+                                    <label for="charity-lastname">Last Name</label>
+                                    <input #lastname="ngModel" type="text" name="charity.lastname" required minlength="2" class="form-control" [(ngModel)]="charity.LastName" id="charity-lastname" placeholder="Enter Last Name">
+                                </div>
+                                <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="alert alert-danger">
+                                    <div *ngIf="lastname.errors?.['required']">
+                                        Last Name is required.
+                                    </div>
+                                    <div *ngIf="lastname.errors?.['minlength']">
+                                        Last Name must be at least 2 characters long.
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6 col-sm-8 col-lg-10 col-12">
+                                    <label for="charity-email">Enter Email</label>
+                                    <input email #email="ngModel" required type="email" name="charity.email" class="form-control" id="charity-email" [(ngModel)]="charity.Email" aria-describedby="emailHelp" placeholder="Enter email">
+                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                </div>
+                                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                                    <div *ngIf="email.errors?.['required']">
+                                        Email is required.
+                                    </div>
+                                    <div *ngIf="email.errors?.['email']">
+                                        Please enter a valid email address!!
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <div class="col-md-6 col-sm-8 col-lg-10 col-12">
+                                    <label for="charity-password">Enter Password</label>
+                                    <input #password="ngModel" required type="password" name="charity.password" class="form-control" id="charity-password" [(ngModel)]="charity.Password" placeholder="Enter password">
+                                </div>
+                                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                                    <div *ngIf="password.errors?.['required']">
+                                        Password is required.
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <div class="col-md-6 col-sm-8 col-lg-10 col-12">
+                                    <label for="charity-address1">Address 1</label>
+                                    <input #address1="ngModel" required type="address1" name="charity.address1" class="form-control" id="charity-address1" [(ngModel)]="charity.Address1" placeholder="Enter Address1">
+                                </div>
+                                <div *ngIf="address1.invalid && (address1.dirty || address1.touched)" class="alert alert-danger">
+                                    <div *ngIf="address1.errors?.['required']">
+                                        Address1 is required.
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <div class="col-md-6 col-sm-8 col-lg-10 col-12">
+                                    <label for="charity-address2">Address 2</label>
+                                    <input type="address2" name="charity.address2" class="form-control" id="charity-address2" [(ngModel)]="charity.Address2" placeholder="Enter Address2">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6 col-sm-8 col-lg-10 col-12">
+                                    <label for="charity-suburb">Suburb</label>
+                                    <input #suburb="ngModel" required type="suburb" name="charity.suburb" class="form-control" id="charity-suburb" [(ngModel)]="charity.Suburb" placeholder="Enter Suburb">
+                                </div>
+                                <div *ngIf="suburb.invalid && (suburb.dirty || suburb.touched)" class="alert alert-danger">
+                                    <div *ngIf="suburb.errors?.['required']">
+                                        Suburb is required.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6 col-sm-8 col-lg-10 col-12">
+                                    <label for="charity-postcode">Postcode</label>
+                                    <input #postcode="ngModel" required type="postcode" name="charity.postcode" class="form-control" id="charity-postcode" [(ngModel)]="charity.Postcode" placeholder="Enter Postcode">
+                                </div>
+                                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                                    <div *ngIf="password.errors?.['required']">
+                                        Postcode is required.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6 col-sm-8 col-lg-10 col-12">
+                                    <label for="charity-country">Country</label>
+                                    <p></p>
+                                    <select id="charity-country" name="charity.country" required [(ngModel)]="charity.Country_ID" #country="ngModel">
+                                <option *ngFor="let c of _Country" [value]="c.ID">{{c.Name}}</option>
+                              </select>
+                                </div>
+                                <div *ngIf="country.invalid && (country.dirty || country.touched)" class="alert alert-danger">
+                                    <div *ngIf="country.errors?.['required']">
+                                        Country is required.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6 col-sm-8 col-lg-10 col-12">
+                                    <label for="charity-state">State</label>
+                                    <input #state="ngModel" required type="state" name="charity.state" class="form-control" id="charity-state" [(ngModel)]="charity.State" placeholder="Enter State">
+                                </div>
+                                <div *ngIf="state.invalid && (state.dirty || state.touched)" class="alert alert-danger">
+                                    <div *ngIf="state.errors?.['required']">
+                                        State is required.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6 col-sm-8 col-lg-10 col-12">
+                                    <label for="charity-subscription">Subscription</label>
+                                    <p></p>
+                                    <select id="charity-subscription" name="charity.subscription" required [(ngModel)]="charity.Subscription_ID" #subscription="ngModel">
+                                   <option *ngFor="let s of _subscriptions | async" [value]="s.ID">{{s.SubscriptionName}}</option>
+                                </select>
+                                </div>
+                                <div *ngIf="country.invalid && (country.dirty || country.touched)" class="alert alert-danger">
+                                    <div *ngIf="country.errors?.['required']">
+                                        Country is required.
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div *ngIf="showError" class="alert alert-danger" role="alert">
+                        {{errorMessage}}
+                    </div>
+                </div>
+                <div class="row mt-3 mb-3" *ngIf="charity.ID ==0">
+                    <div class="col-md-10 col-sm-10 col-lg-10 col-10">
+                        <button style="float: right" (click)="onAddClick()" type="button" class="btn btn-primary"> Add </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-lg-3 col-3"></div>
+
+</div>
